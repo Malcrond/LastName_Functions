@@ -1,0 +1,69 @@
+import random
+primen = []
+
+def rangefinder():
+	while True:
+		respo1 = int(input("Enter a number [Start]: "))
+		if respo1 == 0:
+			print("Enter a number greater than 0")
+		elif respo1 < 0:
+			print("Enter a positive number")
+		else:
+			break
+
+	while True:
+		respo2 = int(input("Enter a number [End]: "))
+		if respo2 == 0:
+			print("Enter a number greater than 0")
+		elif respo2 <= respo1:
+			print(f"Please enter a number greater than {respo1}")
+		else:
+			break
+
+	for i in range(respo1, respo2):
+		if i > 1:
+			for x in range(2, int(i ** 0.5) + 1):
+				if i % x == 0:
+					break
+			else:
+				primen.append(i)
+
+	print(f"The prime numbers between {respo1} and {respo2} are:\n"
+		  f"{primen}")
+
+
+def smallfack():
+	while True:
+		try:
+			interger = int(input("Enter an Integer >= 2: "))
+			if interger < 2:
+				print("Invalid number, please enter an Integer >= 2")
+			else:
+				bababooie = False
+				for i in range(2, interger):
+					if interger % i == 0:
+						print(f"The smallest factor other than 1 for {interger} is {i}")
+						bababooie = True
+						break
+
+				if not bababooie:
+					print(f"{interger} is prime, it has no factor(s)")
+				break
+
+		except ValueError:
+			print("INVALID INPUT, TRY AN ACTUAL NUMBER")
+
+
+print("[1] - Find smallest factor of n\n"
+      "[2] - Find prime numbers of range x and y")
+while True:
+	try:
+		response = (int(input("Input: ")))
+		if response == 1:
+			rangefinder()
+			break
+		elif response == 2:
+			smallfack()
+			break
+	except ValueError:
+		print("ENTER A VALID VALUE")
